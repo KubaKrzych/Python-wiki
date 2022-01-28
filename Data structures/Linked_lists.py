@@ -11,6 +11,11 @@ class TwoWayNode(Node):
 
 
 class LinkedList:
+    """
+    A linked list is a data structure much appreciated by data engineers. It is very efficient when it comes to
+    inserting a value into a DS, because it does not reallocate the existing DS, but simply allocates memory
+    for a new node and then correctly connects the node with the existing linked nodes.
+    """
     def __init__(self):
         self.head = None
 

@@ -1,13 +1,14 @@
-"""
-Easier approach would be just import 'heapq'.
-Heap indexes:
+class BinaryHeap:
+    """
+    Easier approach would be just import 'heapq'. Used
+    Fills in the nodes from top to bottom, then from left to right. If you'd like to insert any value to the binary heap
+    the algorithm would find the last row that is not full (every parent has 0<=x<=2 children) and then find the first
+    node that has zero or None children.
+    Heap indexes:
     Left child index: 2*index + 1
     Right child index: 2*index +2
     Parent: (index-1)/2
-"""
-
-
-class BinaryHeap:
+    """
     def __init__(self, capacity):
         self.storage = [None] * capacity
         self.capacity = capacity

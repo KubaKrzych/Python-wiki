@@ -1,33 +1,3 @@
-from Linked_lists import LinkedList, Node
-
-
-class HashTable(LinkedList):
-
-    def __init__(self, count):
-        self.count = count
-        self.calendar = [None for i in range(self.count)]
-
-    def get_adress(self, key):
-        key = sum(ord(i) for i in key)
-        return key % self.count
-
-    def __setitem__(self, key, value):
-        key = self.get_adress(key)
-        if self.calendar[key] is None:
-            self.calendar[key] = LinkedList()
-            self.calendar[key].insert_at_beginning(value)
-        else:
-            self.calendar[key].insert_at_beginning(value)
-
-    def __str__(self):
-        result = ""
-        for linkedlist in self.calendar:
-            result += str(linkedlist) + "\n"
-        return result
-
-    def __delitem__(self, key):
-        self.calendar[self.get_adress(key)] = None
-
 class Calendar(HashTable):
     def __init__(self, days):
         super().__init__(days)
@@ -42,6 +12,7 @@ class Calendar(HashTable):
                 result += self.calendar[i].sum()
         return result
 
+
 if __name__ == '__main__':
     import csv, array
 
@@ -53,3 +24,38 @@ if __name__ == '__main__':
         if row[0] is not None:
             table[row[0]] = int(row[1])
     print(table.sum_temperature())
+    from Linked_lists import LinkedList
+
+
+    class HashTable(LinkedList):
+        """
+        A hash table is a data structure that calculates a specific value to a given key, and then inputs it in an
+        array.
+        On the basis of hash tables, python's dictionary was written.
+        """
+        def __init__(self, count):
+            self.count = count
+            self.calendar = [None for i in range(self.count)]
+
+        def get_address(self, key):
+            key = sum(ord(i) for i in key)
+            return key % self.count
+
+        def __setitem__(self, key, value):
+            key = self.get_adress(key)
+            if self.calendar[key] is None:
+                self.calendar[key] = LinkedList()
+                self.calendar[key].insert_at_beginning(value)
+            else:
+                self.calendar[key].insert_at_beginning(value)
+
+        def __str__(self):
+            result = ""
+            for linkedlist in self.calendar:
+                result += str(linkedlist) + "\n"
+            return result
+
+        def __delitem__(self, key):
+            self.calendar[self.get_adress(key)] = None
+
+
