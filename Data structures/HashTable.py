@@ -11,23 +11,8 @@ class Calendar(HashTable):
             if self.calendar[i] is not None:
                 result += self.calendar[i].sum()
         return result
-
-
-if __name__ == '__main__':
-    import csv, array
-
-    table = Calendar(13)
-    file = open("../Help/data_structures/4_HashTable_2_Collisions/Solution/nyc_weather.csv")
-    csvreader = csv.reader(file)
-    header = next(csvreader)
-    for row in csvreader:
-        if row[0] is not None:
-            table[row[0]] = int(row[1])
-    print(table.sum_temperature())
-    from Linked_lists import LinkedList
-
-
-    class HashTable(LinkedList):
+    
+class HashTable(LinkedList):
         """
         A hash table is a data structure that calculates a specific value to a given key, and then inputs it in an
         array.
@@ -58,4 +43,21 @@ if __name__ == '__main__':
         def __delitem__(self, key):
             self.calendar[self.get_adress(key)] = None
 
+    
+
+if __name__ == '__main__':
+    import csv, array
+
+    table = Calendar(13)
+    file = open("../Help/data_structures/4_HashTable_2_Collisions/Solution/nyc_weather.csv")
+    csvreader = csv.reader(file)
+    header = next(csvreader)
+    for row in csvreader:
+        if row[0] is not None:
+            table[row[0]] = int(row[1])
+    print(table.sum_temperature())
+    from Linked_lists import LinkedList
+
+
+    
 
